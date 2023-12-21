@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Helvetica', sans-serif;
+}
+
+
+body{
+    background-color: var(--background-color);
+}
+:root {
+    /* colors */
+    --body-color: #fe7f2d;
+    --sidebar-color: #233d4d;
+    --primary-color: #fcca46;
+    --text-color: #ffffff;
+    --dark-text-color: #000000;
+    --background-color: #efefef;
+
+    --col-one-color:#bfbfbf;
+    --col-two-color:#d9d9d9;
+    --col-three-color:#f2f2f2;
+}
+
+nav{
+    
+    background-color: var(--sidebar-color);
+    position: fixed;
+    width: 100vw;
+    height: 80px;
+    display: flex;
+
+
+    .space{
+        flex-grow: 1;
+        
+    }
+
+    img{
+        height: 65px;
+        padding-left: 20px;
+        padding-top: 10px;
+    }
+
+    a{
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+    .items{
+      
+        display: flex;
+        div{
+            padding-top: 25px;
+            padding-left: 25px;
+            padding-right: 25px;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact{
+            padding-right: 50px;
+        }
+    
+
+        font-size: 1.3em;
+    }
+
+
+}
+
+section{
+    height: 100vh;
+}
+
+
+#home{
+    
+    display: flex;
+
+    img{
+        width:50vw ;
+        height: min-content;
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .content{
+        padding: 10px;
+    }
+
+    .hedding{
+        font-size: 3em;
+        font-weight: 600;
+
+    }
+
+    .description{
+        padding-right: 20px;
+        font-size: 2em;
+
+    }    
+}
+
+#login{
+    padding-top: 80px;
+    display: flex;
+    height: 100vh;
+
+
+    form{
+        width: 100vw;
+        background-color: var(--text-color);
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+
+        label{
+            width: 300px;
+            
+
+        }
+        input{
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+
+        }
+        button{
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+
+        }
+
+        .title{
+            font-size: 2em;
+            width: 300px;
+        }
+    }
+
+}
