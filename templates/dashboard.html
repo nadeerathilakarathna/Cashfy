@@ -68,8 +68,11 @@
 
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 
+    <link rel="stylesheet" href="{% static 'css/popup.css' %}">
 
-    <title>Document</title>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <title>Cashfy</title>
 
 </head>
 
@@ -84,8 +87,16 @@
                 </div>
                 <div class="item profile" height="100px">
                     {% if user.is_authenticated %}
-                        <div class="name">{{user.first_name}} {{user.last_name}}</div>
-                        <div class="email">{{user.email}}</div>
+                    <div class="name">{{user.first_name}} {{user.last_name}}</div>
+                    <div class="email">{{user.email}}</div>
+
+                    <script>
+                        // Define a JavaScript variable and assign the user's name to it
+                        var uid = "{{ user.id }}";
+                        // Now you can use the 'userName' variable in your JavaScript code
+                        console.log(uid);
+                    </script>
+
                     {% else %}
                     <div class="name">Your name</div>
                     <div class="email">example@gmail.com</div>
@@ -95,9 +106,9 @@
                 <div class="item main accounts" height="100px">
                     <div class="title">
                         <span>Accounts</span>
-                        <span class="material-symbols-outlined">add</span>
+                        <span class="material-symbols-outlined" onclick="addAccount();">add</span>
                     </div>
-                    <div class="sub">
+                    <div class="sub" id="account_list">
                         <div class="sub-item">
                             <span class="material-symbols-outlined">payments</span>
                             <span class="name">BOC</span>
@@ -165,12 +176,12 @@
 
                 </div>
                 <a href="logout">
-                <div class="item" height="100px">
-                    <div class="title">
-                        <span>Logout</span>
-                        <span class="material-symbols-outlined">logout</span>
+                    <div class="item" height="100px">
+                        <div class="title">
+                            <span>Logout</span>
+                            <span class="material-symbols-outlined">logout</span>
+                        </div>
                     </div>
-                </div>
                 </a>
             </div>
         </nav>
@@ -178,6 +189,7 @@
         <div class="content">
             {% if user.is_authenticated %}
             <div class="namebar">Hello, {{user.first_name}}!</div>
+
             {% endif %}
 
             <div class="daybar">
@@ -237,7 +249,7 @@
 
 
             <div class="add-finance">
-                
+
                 <div class="expence">
                     <div class="title">Expences</div>
                     <div class="categories">
@@ -466,17 +478,104 @@
                     <div class="name">Lunch</div>
                     <div class="value">100</div>
                 </div>
-                
+
             </div>
-
-
-
-
-
-
         </div>
 
+        <div class="popups">
+
+        </div>
     </div> <!--  main -->
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        var iconNames;
+        $(document).ready(function () {
+            $.getJSON('dashboard/geticons', function (data) {
+                var jsonObject = JSON.parse(data);
+                iconNames = jsonObject.icon_names;
+                
+            })
+                .fail(function (jqxhr, textStatus, error) {
+                    var err = textStatus + ", " + error;
+                    console.error("Error fetching JSON: " + err);
+                });
+        });
+
+    </script>
+
+<!-- 
+<script>
+    $(document).ready(function(){
+        setInterval(function(){
+            $.ajax({
+                type: 'GET',
+                url: "{% url 'getaccounts' %}",
+                data: {
+                    uid: uid,
+                },
+                success: function(response){
+                    console.log(response);
+                    updateAccountList(response.accounts);
+                },
+                error: function(response){
+                    console.log('error!');
+                }
+            });
+        }, 1000); // 1000 milliseconds = 1 second
+    });
+</script> -->
+
+
+
+<script>
+    $(document).ready(function(){
+        setInterval(function(){
+            $.ajax({
+                type: 'GET',
+                url: "{% url 'getaccounts' %}",
+                data: {
+                    uid: uid,
+                },
+                success: function(response){
+                    // Call a function to update the HTML with the received accounts
+                    updateAccountList(response.accounts);
+                },
+                error: function(response){
+                    console.log('error!');
+                }
+            });
+        }, 1000); // 1000 milliseconds = 1 second
+
+        // Function to update the HTML with the received accounts
+        function updateAccountList(accounts) {
+            var accountListContainer = $("#account_list");
+            
+            // Clear existing content
+            accountListContainer.empty();
+
+            // Iterate through the accounts and append them to the container
+            accounts.forEach(function(account) {
+                var checkboxValue = account.checked ? 'checked' : '';
+
+                // Build the HTML for each account
+                var accountHtml = `
+                    <div class="sub-item">
+                        <span class="material-symbols-outlined">${account.icon}</span>
+                        <span class="name">${account.name}</span>
+                        <input type="checkbox" id="${account.name}" name="${account.name}" ${checkboxValue}>
+                    </div>
+                `;
+
+                // Append the HTML to the container
+                accountListContainer.append(accountHtml);
+            });
+        }
+    });
+</script>
+
+
 </body>
 
 </html>

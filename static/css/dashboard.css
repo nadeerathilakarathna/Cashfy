@@ -48,6 +48,74 @@ body {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
     border-radius: 0 0px 0 0;
+
+    .items {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        
+
+        .item {
+            padding: 10px 0 10px 0;
+
+            .name {
+                width: 75%;
+            }
+
+            .title {
+                font-size: 1.2em;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                
+                .material-symbols-outlined{
+                    cursor: pointer;
+                }
+            
+            }
+
+            .sub-item {
+                padding: 8px 10px 8px 10px;
+                font-size: 1.2em;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid rgb(135, 135, 135);
+                /* display: none; */
+            }
+
+            .sub-title {
+                font-size: 1.2em;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                padding-top: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+                /* display: none; */
+            }
+            
+        }
+    }
+
+    .headding img {
+        height: 50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profile {
+        .name {
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+    }
+    
 }
 
 .sidebar::-webkit-scrollbar {
@@ -65,72 +133,9 @@ body {
     /* Hide the track */
 }
 
-.sidebar .items {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch
-}
-
-.sidebar .items .item {
-    padding: 10px 0 10px 0;
-}
-
-.sidebar .headding img {
-    height: 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.sidebar .profile {
-    .name {
-        font-size: 1.2em;
-        font-weight: 500;
-    }
-}
-
-.sidebar .items .item .title {
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    padding-top: 10px;
-
-}
-
-.sidebar .items .item .sub-item {
-    padding: 8px 10px 8px 10px;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(135, 135, 135);
-    /* display: none; */
-
-    .name {
-        width: 75%;
-    }
-
-}
 
 
-.sidebar .items .item .sub-title {
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
-    /* display: none; */
-}
 
-.sidebar {
-    /* display: none; */
-}
 
 
 
