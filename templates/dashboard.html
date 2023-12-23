@@ -6,6 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
 
 
     <!-- Latest compiled and minified CSS -->
@@ -136,40 +137,44 @@
                     </div>
                     <div class="sub">
                         <div class="sub-title">
-                            <span>Expences</span>
-                            <span class="material-symbols-outlined">add</span>
+                            <span>Expenses</span>
+                            <span class="material-symbols-outlined" onclick="addExpense();">add</span>
                         </div>
-                        <div class="sub-item">
-                            <span class="name">Eating</span>
-                            <span class="material-symbols-outlined">restaurant</span>
-                        </div>
-                        <div class="sub-item">
-                            <span class="name">Education</span>
-                            <span class="material-symbols-outlined">school</span>
-                        </div>
-                        <div class="sub-item">
-                            <span class="name">Transport</span>
-                            <span class="material-symbols-outlined">directions_car</span>
-                        </div>
-                        <div class="sub-item">
-                            <span class="name">Others</span>
-                            <span class="material-symbols-outlined">shopping_cart</span>
+                        <div id="expenses_list">
+                            <div class="sub-item">
+                                <span class="name">Eating</span>
+                                <span class="material-symbols-outlined">restaurant</span>
+                            </div>
+                            <div class="sub-item">
+                                <span class="name">Education</span>
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <div class="sub-item">
+                                <span class="name">Transport</span>
+                                <span class="material-symbols-outlined">directions_car</span>
+                            </div>
+                            <div class="sub-item">
+                                <span class="name">Others</span>
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                            </div>
                         </div>
                         <div class="sub-title">
                             <span>Incomes</span>
-                            <span class="material-symbols-outlined">add</span>
+                            <span class="material-symbols-outlined" onclick="addIncome();">add</span>
                         </div>
-                        <div class="sub-item">
-                            <span class="name">Salary</span>
-                            <span class="material-symbols-outlined">payments</span>
-                        </div>
-                        <div class="sub-item">
-                            <span class="name">Savings</span>
-                            <span class="material-symbols-outlined">monetization_on</span>
-                        </div>
-                        <div class="sub-item">
-                            <span class="name">Business</span>
-                            <span class="material-symbols-outlined">store</span>
+                        <div id="income_list">
+                            <div class="sub-item">
+                                <span class="name">Salary</span>
+                                <span class="material-symbols-outlined">payments</span>
+                            </div>
+                            <div class="sub-item">
+                                <span class="name">Savings</span>
+                                <span class="material-symbols-outlined">monetization_on</span>
+                            </div>
+                            <div class="sub-item">
+                                <span class="name">Business</span>
+                                <span class="material-symbols-outlined">store</span>
+                            </div>
                         </div>
 
                     </div>
@@ -222,7 +227,7 @@
                 </div>
             </div>
 
-            <div class="accountbar">
+            <div class="accountbar" id="account_bar">
                 <span class="material-symbols-outlined">account_balance_wallet</span>
                 <span class="material-symbols-outlined">payments</span>
                 <span class="material-symbols-outlined">account_balance</span>
@@ -252,7 +257,7 @@
 
                 <div class="expence">
                     <div class="title">Expences</div>
-                    <div class="categories">
+                    <div class="categories" id="expenses_container">
                         <div class="item">
                             <span class="material-symbols-outlined img">restaurant</span>
                             <div class="name">eating</div>
@@ -291,7 +296,7 @@
 
                 <div class="income">
                     <div class="title">Incomes</div>
-                    <div class="categories">
+                    <div class="categories" id="income_container">
                         <div class="item">
                             <span class="material-symbols-outlined img">restaurant</span>
                             <div class="name">eating</div>
@@ -495,7 +500,7 @@
             $.getJSON('dashboard/geticons', function (data) {
                 var jsonObject = JSON.parse(data);
                 iconNames = jsonObject.icon_names;
-                
+
             })
                 .fail(function (jqxhr, textStatus, error) {
                     var err = textStatus + ", " + error;
@@ -505,7 +510,7 @@
 
     </script>
 
-<!-- 
+    <!-- 
 <script>
     $(document).ready(function(){
         setInterval(function(){
@@ -528,39 +533,62 @@
 </script> -->
 
 
+    <script>
+        $(document).ready(function () {
+            setInterval(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "{% url 'getaccounts' %}",
+                    data: {
+                        uid: uid,
+                    },
+                    success: function (response) {
+                        // Call a function to update the HTML with the received accounts
+                        updateAccountList(response.accounts);
+                    },
+                    error: function (response) {
+                        console.log('error!');
+                    }
+                });
+            }, 1000); // 1000 milliseconds = 1 second
 
-<script>
-    $(document).ready(function(){
-        setInterval(function(){
-            $.ajax({
-                type: 'GET',
-                url: "{% url 'getaccounts' %}",
-                data: {
-                    uid: uid,
-                },
-                success: function(response){
-                    // Call a function to update the HTML with the received accounts
-                    updateAccountList(response.accounts);
-                },
-                error: function(response){
-                    console.log('error!');
-                }
-            });
-        }, 1000); // 1000 milliseconds = 1 second
+            // Function to update the HTML with the received accounts
+            function updateAccountList(accounts) {
+                var accountListContainer = $("#account_list");
+                var accountBarContainer = $("#account_bar");
+                
 
-        // Function to update the HTML with the received accounts
-        function updateAccountList(accounts) {
-            var accountListContainer = $("#account_list");
-            
-            // Clear existing content
-            accountListContainer.empty();
+                // Clear existing content
+                accountListContainer.empty();
+                accountBarContainer.empty();
+                
 
-            // Iterate through the accounts and append them to the container
-            accounts.forEach(function(account) {
-                var checkboxValue = account.checked ? 'checked' : '';
 
-                // Build the HTML for each account
-                var accountHtml = `
+                // Iterate through the accounts and append them to the container
+                default_selection=false;
+                account_dropdown ='';
+
+                accounts.forEach(function (account) {
+
+
+                    if (default_selection == false){
+                        if (account.checked){
+                            account_dropdown = account_dropdown + '<option value="'+account.name+'" selected>'+account.name+'</option>';
+                            default_selection = account.name;
+                        }else{
+                            account_dropdown = account_dropdown + '<option value="'+account.name+'">'+account.name+'</option>';
+                        }
+                    }else{
+                        account_dropdown = account_dropdown + '<option value="'+account.name+'">'+account.name+'</option>';
+                    }
+
+
+                    var checkboxValue = account.checked ? 'checked' : '';
+                    var accountBarHtml = '';
+                    var a = account.checked ? `<span class="material-symbols-outlined">${account.icon}</span>` : '';
+
+                    // Build the HTML for each account
+                    var accountHtml = `
                     <div class="sub-item">
                         <span class="material-symbols-outlined">${account.icon}</span>
                         <span class="name">${account.name}</span>
@@ -568,13 +596,275 @@
                     </div>
                 `;
 
-                // Append the HTML to the container
-                accountListContainer.append(accountHtml);
+                    // Append the HTML to the container
+                    accountListContainer.append(accountHtml);
+                    accountBarContainer.append(a);
+                    
+                });
+            
+            }
+            
+            
+        });
+
+        
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            setInterval(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "{% url 'getexpenses' %}",
+                    data: {
+                        uid: uid,
+                    },
+                    success: function (response) {
+                        // Call a function to update the HTML with the received accounts
+                        updateExpenseList(response.expenses);
+                    },
+                    error: function (response) {
+                        console.log('error!');
+                    }
+                });
+            }, 1000); // 1000 milliseconds = 1 second
+
+            // Function to update the HTML with the received accounts
+            function updateExpenseList(expenses) {
+                var expensesSidebar = $("#expenses_list");
+                var expensesContainer = $("#expenses_container");
+
+                // Clear existing content
+                expensesSidebar.empty();
+                expensesContainer.empty();
+
+
+                // Iterate through the accounts and append them to the container
+                expenses.forEach(function (expense) {
+                    var expensesSidebarHtml = `
+                    <div class="sub-item">
+                        <span class="name">${expense.name}</span>
+                        <span class="material-symbols-outlined">${expense.icon}</span>
+                    </div>
+                    `;
+                    // Build the HTML for each account
+                    var expensesContainerHtml = `
+                    <div class="item" onclick="openPopupTransaction(${expense.id},'${expense.name}','${expense.icon}');">
+                        <span class="material-symbols-outlined img">${expense.icon}</span>
+                        <div class="name">${expense.name}</div>
+                    </div>
+            `;
+
+                    // Append the HTML to the container
+                    expensesSidebar.append(expensesSidebarHtml);
+                    expensesContainer.append(expensesContainerHtml);
+                });
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            setInterval(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: "{% url 'getincome' %}",
+                    data: {
+                        uid: uid,
+                    },
+                    success: function (response) {
+                        // Call a function to update the HTML with the received accounts
+                        updateIncomeList(response.incomes);
+                    },
+                    error: function (response) {
+                        console.log('error!');
+                    }
+                });
+            }, 1000); // 1000 milliseconds = 1 second
+
+            // Function to update the HTML with the received accounts
+            function updateIncomeList(incomes) {
+                var incomesSidebar = $("#income_list");
+                var incomesContainer = $("#income_container");
+
+                // Clear existing content
+                incomesSidebar.empty();
+                incomesContainer.empty();
+
+
+                // Iterate through the accounts and append them to the container
+                incomes.forEach(function (income) {
+                    var incomesSidebarHtml = `
+                <div class="sub-item">
+                    <span class="name">${income.name}</span>
+                    <span class="material-symbols-outlined">${income.icon}</span>
+                </div>
+                `;
+                    // Build the HTML for each account
+                    var incomeContainerHtml = `
+                <div class="item" onclick="openPopupTransaction(${income.id},'${income.name}','${income.icon}');">
+                    <span class="material-symbols-outlined img">${income.icon}</span>
+                    <div class="name">${income.name}</div>
+                </div>
+        `;
+
+                    // Append the HTML to the container
+                    incomesSidebar.append(incomesSidebarHtml);
+                    incomesContainer.append(incomeContainerHtml);
+                });
+            }
+        });
+    </script>
+
+
+
+
+    <script>
+        $(document).on('submit', '#createaccount', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'createaccount' %}",
+                data: {
+                    uid: uid,
+                    account: $('#account').val(),
+                    initial: $('#initial').val(),
+                    icon: $('input[name="icon"]:checked').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+
+                },
+                success: function (response) {
+                    $('.popups').empty();
+                },
+                error: function (xhr, status, error) {
+                    console.log('Error:', error);
+                    // Log the server's response for more information
+                    console.log(xhr.responseText);
+                }
             });
-        }
+
+        });
+
+
+        $(document).on('submit', '#createexpense', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'createexpense' %}",
+                data: {
+                    uid: uid,
+                    name: $('#expense').val(),
+                    icon: $('input[name="icon"]:checked').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+
+                },
+                success: function (response) {
+                    $('.popups').empty();
+                },
+                error: function (xhr, status, error) {
+                    console.log('Error:', error);
+                    // Log the server's response for more information
+                    console.log(xhr.responseText);
+                }
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).on('submit', '#createincome', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: "{% url 'createincome' %}",
+                data: {
+                    uid: uid,
+                    name: $('#income').val(),
+                    icon: $('input[name="icon"]:checked').val(),
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+
+                },
+                success: function (response) {
+                    $('.popups').empty();
+                },
+                error: function (xhr, status, error) {
+                    console.log('Error:', error);
+                    // Log the server's response for more information
+                    console.log(xhr.responseText);
+                }
+            });
+
+        });
+    </script>
+
+<script>
+    $(document).on('submit', '#createtransaction', function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'createtransaction' %}",
+            data: {
+                uid: uid,
+                category: $('#category_id').val(),
+
+                date: $('#date').val(),
+                amount: $('#amount').val(),
+                description: $('#description').val(),
+
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function (response) {
+                $('.popups').empty();
+            },
+            error: function (xhr, status, error) {
+                console.log('Error:', error);
+                // Log the server's response for more information
+                console.log(xhr.responseText);
+            }
+        });
+
     });
 </script>
 
+
+
+
+    <!-- <div class="popup-box" id="popup_categories">
+        <button class="close" onclick="removeAllContents('popups');">&times;</button>
+
+        <form action="" method="post" id='createaccount'>
+
+            <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}" id="csrf">
+
+            
+            <span class="material-symbols-outlined img" id="category_image">restaurant</span>
+            <br>
+            <label for="" class="category" id="category_name">Eating</label>
+
+            <div class="content">
+                <input type="date" name="date" id="date" >
+                <br>
+
+                <select id="dropdown" name="dropdown">
+                    <option value="option1">Option 1</option>
+                    <option value="option2" selected>Option 2</option>
+                    <option value="option3">Option 3</option>
+                    
+                </select>
+
+                <br>
+
+
+                <input type="number" name="amount" id="amount" placeholder="Amount " class="amount">
+                <br>
+                <input type="text" name="description" id="description" placeholder="Description" class="description">
+
+                <br>
+            </div>
+            <button type="submit" class="submit" onclick="console.log('hello');">Add</button>
+        </form>
+    </div> -->
 
 </body>
 

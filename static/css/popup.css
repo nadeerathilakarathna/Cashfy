@@ -36,6 +36,7 @@
 
     }
 
+
     .close:hover {
         background-color: var(--pop-button-hover-color);
         color: var(--pop-text-color);
@@ -163,7 +164,65 @@
         background-color: transparent;
     }
 
+    input[type="date"] {
+        border: none;
+        outline: none;
+        width: 150px;
+        position: relative;
+        left: 50%;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        transform: translate(-50%,0);
+        padding: 10px;
+        border-bottom: 1px solid black;
+    }
+
+    #category_image{
+        position: relative;
+        left: 50%;
+        transform: translate(-50%,0);
+        padding: 15px;
+        border-radius: 150px;
+        margin-top: 15px;
+        font-size: 4em;
+        background-color: lime;
+    }
+
+    #category_name{
+        position: relative;
+        left: 50%;
+        transform: translate(-50%,0);
+        font-weight: bold;
+        font-size: 1.5em;
+        text-align: center;
+
+    }
+
+    select{
+        font-size: 1.2em;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%,0);
+        width: 300px;
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
+    select:hover{
+        border: 1px solid #999;
+    }
 
 
 }
+
+#popup_categories{
+    width: 30vw;
+    min-width: 400px;
+    height: 450px;
+}
+
+
+
 

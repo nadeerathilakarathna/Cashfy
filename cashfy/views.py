@@ -5,6 +5,8 @@ import json
 from django.core.serializers.json import DjangoJSONEncoder
 from .models import Icon
 from .models import Account
+from .models import Category
+
 
 
 
@@ -46,6 +48,7 @@ def getaccounts(request):
     accounts = Account.objects.filter(uid=uid)
     accounts_list = [
         {
+            'id' : account.id,
             'name': account.name,
             'icon': account.icon,
             'checked': account.checked,
@@ -53,3 +56,89 @@ def getaccounts(request):
         for account in accounts
     ]
     return JsonResponse({'accounts': accounts_list})
+
+def createaccount(request):
+    if request.method =='POST':
+        uid = request.POST['uid']
+        account = request.POST['account']
+        initial = request.POST['initial']
+        icon = request.POST['icon']
+
+        account_exists = Account.objects.filter(uid=uid, name=account).exists()
+        if not account_exists:
+            object = Account.objects.create(uid=uid, name=account, icon=icon, checked=False)
+            object.save()
+        else:
+            raise ("Duplicates found")
+    return HttpResponse("Done")
+
+def getexpenses(request):
+    uid = request.GET.get('uid')
+    expenses = Category.objects.filter(uid=uid , expense=True)
+    expense_list = [
+        {
+            'name': expense.name,
+            'icon': expense.icon,
+            'id': expense.id,
+        }
+        for expense in expenses
+    ]
+    return JsonResponse({'expenses': expense_list})
+
+def getincome(request):
+    uid = request.GET.get('uid')
+    incomes = Category.objects.filter(uid=uid , expense=False)
+    income_list = [
+        {
+            'name': income.name,
+            'icon': income.icon,
+            'id': income.id,
+        }
+        for income in incomes
+    ]
+    return JsonResponse({'incomes': income_list})
+
+
+def createexpense(request):
+    if request.method =='POST':
+        uid = request.POST['uid']
+        name = request.POST['name']
+        icon = request.POST['icon']
+
+        expense_exists = Category.objects.filter(uid=uid, name=name, expense=True).exists()
+        if not expense_exists:
+            object = Category.objects.create(uid=uid, name=name, icon=icon, expense=True)
+            object.save()
+        else:
+            raise ("Duplicates found")
+    return HttpResponse("Done")
+
+
+def createincome(request):
+    if request.method =='POST':
+        uid = request.POST['uid']
+        name = request.POST['name']
+        icon = request.POST['icon']
+
+        income_exists = Category.objects.filter(uid=uid, name=name, expense=False).exists()
+        if not income_exists:
+            object = Category.objects.create(uid=uid, name=name, icon=icon, expense=False)
+            object.save()
+        else:
+            raise ("Duplicates found")
+    return HttpResponse("Done")
+
+def createtransaction(request):
+    if request.method == 'POST':
+        uid = request.POST['uid']
+        category = request.POST['category']
+        date = request.POST['date']
+        amount = request.POST['amount']
+        description = request.POST['description']
+
+        object = Category.objects.create(uid=uid, timestamp=date, icon=icon, expense=False)
+        object.save()
+
+
+
+    return HttpResponse("Done")
