@@ -199,318 +199,323 @@
 
             <div class="daybar">
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                    <input type="radio" class="btn-check" name="timeFilter" id="year" autocomplete="off">
+                    <input type="radio" class="btn-check" name="timeFilter" id="year" value="year" autocomplete="off"
+                        onclick="changeDayBar(uid,'year');">
                     <label class="btn btn-outline-primary" for="year">Year</label>
 
-                    <input type="radio" class="btn-check" name="timeFilter" id="week" autocomplete="off" checked>
+                    <input type="radio" class="btn-check" name="timeFilter" id="week" value="week" autocomplete="off"
+                        onclick="changeDayBar(uid,'week')" ; checked>
                     <label class="btn btn-outline-primary" for="week">Week</label>
 
-                    <input type="radio" class="btn-check" name="timeFilter" id="day" autocomplete="off">
+                    <input type="radio" class="btn-check" name="timeFilter" id="day" value="day" autocomplete="off"
+                        onclick="changeDayBar(uid,'day');">
                     <label class="btn btn-outline-primary" for="day">Day</label>
 
-                    <input type="radio" class="btn-check" name="timeFilter" id="month" autocomplete="off">
+                    <input type="radio" class="btn-check" name="timeFilter" id="month" value="month" autocomplete="off"
+                        onclick="changeDayBar(uid,'month');">
                     <label class="btn btn-outline-primary" for="month">Month</label>
 
-                    <input type="radio" class="btn-check" name="timeFilter" id="all" autocomplete="off">
+                    <input type="radio" class="btn-check" name="timeFilter" id="all" value="all" autocomplete="off"
+                        onclick="changeDayBar(uid,'all');">
                     <label class="btn btn-outline-primary" for="all">All</label>
                 </div>
                 <br>
             </div>
 
-            <div class="duration">Aug 17 - Aug 21</div>
+            <div class="duration" id="daterange">Aug 17 - Aug 21</div>
 
 
             <div class="navigator">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-secondary">&lt;</button>
-                    <button type="button" class="btn btn-secondary">&gt;</button>
+                    <button type="button" class="btn btn-secondary" onclick="navigation('prev');">&lt;</button>
+                    <button type="button" class="btn btn-secondary" onclick="navigation('next');">&gt;</button>
                 </div>
             </div>
 
-            <div class="accountbar" id="account_bar">
-                <span class="material-symbols-outlined">account_balance_wallet</span>
-                <span class="material-symbols-outlined">payments</span>
-                <span class="material-symbols-outlined">account_balance</span>
-                <span class="material-symbols-outlined">account_balance_wallet</span>
-                <span class="material-symbols-outlined">account_balance_wallet</span>
+            <div class=" accountbar" id="account_bar">
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <span class="material-symbols-outlined">payments</span>
+                        <span class="material-symbols-outlined">account_balance</span>
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                        <span class="material-symbols-outlined">account_balance_wallet</span>
+                </div>
+
+                <div class="donut">
+
+                    <div id="donutchart" style="width:40vw ; height: 50vh;">
+
+                    </div>
+                </div>
+
+                <div class="amountdata">
+                    <div id="full_income">+ LKR 7500</div>
+                    <div id="full_expences">- LKR 2500</div>
+                    <div id="current_balance">LKR 5000</div>
+                </div>
+
+                <div class="now_balance">
+                    <button>Balance : LKR 15000</button>
+                </div>
+
+
+                <div class="add-finance">
+
+                    <div class="expence">
+                        <div class="title">Expences</div>
+                        <div class="categories" id="expenses_container">
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">Education</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="income">
+                        <div class="title">Incomes</div>
+                        <div class="categories" id="income_container">
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+                            <div class="item">
+                                <span class="material-symbols-outlined img">restaurant</span>
+                                <div class="name">eating</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="finance-list">
+                    <div class="type">
+                        <div class="name">Expences</div>
+                        <div class="value">50000</div>
+                    </div>
+                    <div class="categories">
+                        <div class="title">
+                            <span class="material-symbols-outlined">restaurant</span>
+                            <div class="name">Eating</div>
+                        </div>
+                        <div class="value">1000</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">100</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Breakfast</div>
+                        <div class="value">100</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">dinner</div>
+                        <div class="value">150</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">200</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Eat</div>
+                        <div class="value">150</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Tea</div>
+                        <div class="value">50</div>
+                    </div>
+
+                    <div class="categories">
+                        <div class="title">
+                            <span class="material-symbols-outlined">restaurant</span>
+                            <div class="name">Eating</div>
+                        </div>
+                        <div class="value">1000</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">100</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Breakfast</div>
+                        <div class="value">100</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">dinner</div>
+                        <div class="value">150</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">200</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Eat</div>
+                        <div class="value">150</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Tea</div>
+                        <div class="value">50</div>
+                    </div>
+
+                    <div class="categories">
+                        <div class="title">
+                            <span class="material-symbols-outlined">restaurant</span>
+                            <div class="name">Eating</div>
+                        </div>
+                        <div class="value">1000</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">100</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Breakfast</div>
+                        <div class="value">100</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">dinner</div>
+                        <div class="value">150</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">200</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Eat</div>
+                        <div class="value">150</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Tea</div>
+                        <div class="value">50</div>
+                    </div>
+
+
+                    <div class="type">
+                        <div class="name">Incomes</div>
+                        <div class="value">50000</div>
+                    </div>
+                    <div class="categories">
+                        <div class="title">
+                            <span class="material-symbols-outlined">restaurant</span>
+                            <div class="name">Eating</div>
+                        </div>
+                        <div class="value">1000</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">100</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Breakfast</div>
+                        <div class="value">100</div>
+                    </div>
+
+
+                    <div class="categories">
+                        <div class="title">
+                            <span class="material-symbols-outlined">restaurant</span>
+                            <div class="name">Eating</div>
+                        </div>
+                        <div class="value">1000</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">100</div>
+                    </div>
+
+                    <div class="categories">
+                        <div class="title">
+                            <span class="material-symbols-outlined">restaurant</span>
+                            <div class="name">Eating</div>
+                        </div>
+                        <div class="value">1000</div>
+                    </div>
+                    <div class="items">
+                        <div class="name">Lunch</div>
+                        <div class="value">100</div>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="donut">
-
-                <div id="donutchart" style="width:40vw ; height: 50vh;">
-
-                </div>
-            </div>
-
-            <div class="amountdata">
-                <div id="full_income">+ LKR 7500</div>
-                <div id="full_expences">- LKR 2500</div>
-                <div id="current_balance">LKR 5000</div>
-            </div>
-
-            <div class="now_balance">
-                <button>Balance : LKR 15000</button>
-            </div>
-
-
-            <div class="add-finance">
-
-                <div class="expence">
-                    <div class="title">Expences</div>
-                    <div class="categories" id="expenses_container">
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">Education</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="income">
-                    <div class="title">Incomes</div>
-                    <div class="categories" id="income_container">
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-                        <div class="item">
-                            <span class="material-symbols-outlined img">restaurant</span>
-                            <div class="name">eating</div>
-                        </div>
-
-                    </div>
-
-                </div>
+            <div class="popups">
 
             </div>
+        </div> <!--  main -->
 
 
-            <div class="finance-list">
-                <div class="type">
-                    <div class="name">Expences</div>
-                    <div class="value">50000</div>
-                </div>
-                <div class="categories">
-                    <div class="title">
-                        <span class="material-symbols-outlined">restaurant</span>
-                        <div class="name">Eating</div>
-                    </div>
-                    <div class="value">1000</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">100</div>
-                </div>
-                <div class="items">
-                    <div class="name">Breakfast</div>
-                    <div class="value">100</div>
-                </div>
-                <div class="items">
-                    <div class="name">dinner</div>
-                    <div class="value">150</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">200</div>
-                </div>
-                <div class="items">
-                    <div class="name">Eat</div>
-                    <div class="value">150</div>
-                </div>
-                <div class="items">
-                    <div class="name">Tea</div>
-                    <div class="value">50</div>
-                </div>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            var iconNames;
+            $(document).ready(function () {
+                $.getJSON('dashboard/geticons', function (data) {
+                    var jsonObject = JSON.parse(data);
+                    iconNames = jsonObject.icon_names;
 
-                <div class="categories">
-                    <div class="title">
-                        <span class="material-symbols-outlined">restaurant</span>
-                        <div class="name">Eating</div>
-                    </div>
-                    <div class="value">1000</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">100</div>
-                </div>
-                <div class="items">
-                    <div class="name">Breakfast</div>
-                    <div class="value">100</div>
-                </div>
-                <div class="items">
-                    <div class="name">dinner</div>
-                    <div class="value">150</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">200</div>
-                </div>
-                <div class="items">
-                    <div class="name">Eat</div>
-                    <div class="value">150</div>
-                </div>
-                <div class="items">
-                    <div class="name">Tea</div>
-                    <div class="value">50</div>
-                </div>
+                })
+                    .fail(function (jqxhr, textStatus, error) {
+                        var err = textStatus + ", " + error;
+                        console.error("Error fetching JSON: " + err);
+                    });
+            });
 
-                <div class="categories">
-                    <div class="title">
-                        <span class="material-symbols-outlined">restaurant</span>
-                        <div class="name">Eating</div>
-                    </div>
-                    <div class="value">1000</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">100</div>
-                </div>
-                <div class="items">
-                    <div class="name">Breakfast</div>
-                    <div class="value">100</div>
-                </div>
-                <div class="items">
-                    <div class="name">dinner</div>
-                    <div class="value">150</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">200</div>
-                </div>
-                <div class="items">
-                    <div class="name">Eat</div>
-                    <div class="value">150</div>
-                </div>
-                <div class="items">
-                    <div class="name">Tea</div>
-                    <div class="value">50</div>
-                </div>
+        </script>
 
-
-                <div class="type">
-                    <div class="name">Incomes</div>
-                    <div class="value">50000</div>
-                </div>
-                <div class="categories">
-                    <div class="title">
-                        <span class="material-symbols-outlined">restaurant</span>
-                        <div class="name">Eating</div>
-                    </div>
-                    <div class="value">1000</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">100</div>
-                </div>
-                <div class="items">
-                    <div class="name">Breakfast</div>
-                    <div class="value">100</div>
-                </div>
-
-
-                <div class="categories">
-                    <div class="title">
-                        <span class="material-symbols-outlined">restaurant</span>
-                        <div class="name">Eating</div>
-                    </div>
-                    <div class="value">1000</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">100</div>
-                </div>
-
-                <div class="categories">
-                    <div class="title">
-                        <span class="material-symbols-outlined">restaurant</span>
-                        <div class="name">Eating</div>
-                    </div>
-                    <div class="value">1000</div>
-                </div>
-                <div class="items">
-                    <div class="name">Lunch</div>
-                    <div class="value">100</div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="popups">
-
-        </div>
-    </div> <!--  main -->
-
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        var iconNames;
-        $(document).ready(function () {
-            $.getJSON('dashboard/geticons', function (data) {
-                var jsonObject = JSON.parse(data);
-                iconNames = jsonObject.icon_names;
-
-            })
-                .fail(function (jqxhr, textStatus, error) {
-                    var err = textStatus + ", " + error;
-                    console.error("Error fetching JSON: " + err);
-                });
-        });
-
-    </script>
-
-    <!-- 
+        <!-- 
 <script>
     $(document).ready(function(){
         setInterval(function(){
@@ -533,304 +538,329 @@
 </script> -->
 
 
-    <script>
-        $(document).ready(function () {
-            setInterval(function () {
-                $.ajax({
-                    type: 'GET',
-                    url: "{% url 'getaccounts' %}",
-                    data: {
-                        uid: uid,
-                    },
-                    success: function (response) {
-                        // Call a function to update the HTML with the received accounts
-                        updateAccountList(response.accounts);
-                    },
-                    error: function (response) {
-                        console.log('error!');
-                    }
-                });
-            }, 1000); // 1000 milliseconds = 1 second
-
-            // Function to update the HTML with the received accounts
-            function updateAccountList(accounts) {
-                var accountListContainer = $("#account_list");
-                var accountBarContainer = $("#account_bar");
-                
-
-                // Clear existing content
-                accountListContainer.empty();
-                accountBarContainer.empty();
-                
-
-
-                // Iterate through the accounts and append them to the container
-                default_selection=false;
-                account_dropdown ='';
-
-                accounts.forEach(function (account) {
-
-
-                    if (default_selection == false){
-                        if (account.checked){
-                            account_dropdown = account_dropdown + '<option value="'+account.name+'" selected>'+account.name+'</option>';
-                            default_selection = account.name;
-                        }else{
-                            account_dropdown = account_dropdown + '<option value="'+account.name+'">'+account.name+'</option>';
+        <script>
+            $(document).ready(function () {
+                setInterval(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: "{% url 'getaccounts' %}",
+                        data: {
+                            uid: uid,
+                        },
+                        success: function (response) {
+                            // Call a function to update the HTML with the received accounts
+                            updateAccountList(response.accounts);
+                        },
+                        error: function (response) {
+                            console.log('error!');
                         }
-                    }else{
-                        account_dropdown = account_dropdown + '<option value="'+account.name+'">'+account.name+'</option>';
-                    }
+                    });
+                }, 1000); // 1000 milliseconds = 1 second
+
+                // Function to update the HTML with the received accounts
+                function updateAccountList(accounts) {
+                    var accountListContainer = $("#account_list");
+                    var accountBarContainer = $("#account_bar");
 
 
-                    var checkboxValue = account.checked ? 'checked' : '';
-                    var accountBarHtml = '';
-                    var a = account.checked ? `<span class="material-symbols-outlined">${account.icon}</span>` : '';
+                    // Clear existing content
+                    accountListContainer.empty();
+                    accountBarContainer.empty();
 
-                    // Build the HTML for each account
-                    var accountHtml = `
+
+
+                    // Iterate through the accounts and append them to the container
+                    default_selection = false;
+                    account_dropdown = '';
+
+                    accounts.forEach(function (account) {
+
+
+                        if (default_selection == false) {
+                            if (account.checked) {
+                                account_dropdown = account_dropdown + '<option value="' + account.name + '" selected>' + account.name + '</option>';
+                                default_selection = account.name;
+                            } else {
+                                account_dropdown = account_dropdown + '<option value="' + account.name + '">' + account.name + '</option>';
+                            }
+                        } else {
+                            account_dropdown = account_dropdown + '<option value="' + account.name + '">' + account.name + '</option>';
+                        }
+
+
+                        var checkboxValue = account.checked ? 'checked' : '';
+                        var accountBarHtml = '';
+                        var a = account.checked ? `<span class="material-symbols-outlined">${account.icon}</span>` : '';
+
+                        // Build the HTML for each account
+                        var accountHtml = `
                     <div class="sub-item">
                         <span class="material-symbols-outlined">${account.icon}</span>
                         <span class="name">${account.name}</span>
-                        <input type="checkbox" id="${account.name}" name="${account.name}" ${checkboxValue}>
+                        <input type="checkbox" id="${account.name}" name="${account.name}" ${checkboxValue} onclick="selectAccount(${account.id});">
                     </div>
                 `;
 
-                    // Append the HTML to the container
-                    accountListContainer.append(accountHtml);
-                    accountBarContainer.append(a);
-                    
-                });
-            
-            }
-            
-            
-        });
+                        // Append the HTML to the container
+                        accountListContainer.append(accountHtml);
+                        accountBarContainer.append(a);
 
-        
-    </script>
+                    });
+
+                }
 
 
-    <script>
-        $(document).ready(function () {
-            setInterval(function () {
-                $.ajax({
-                    type: 'GET',
-                    url: "{% url 'getexpenses' %}",
-                    data: {
-                        uid: uid,
-                    },
-                    success: function (response) {
-                        // Call a function to update the HTML with the received accounts
-                        updateExpenseList(response.expenses);
-                    },
-                    error: function (response) {
-                        console.log('error!');
-                    }
-                });
-            }, 1000); // 1000 milliseconds = 1 second
-
-            // Function to update the HTML with the received accounts
-            function updateExpenseList(expenses) {
-                var expensesSidebar = $("#expenses_list");
-                var expensesContainer = $("#expenses_container");
-
-                // Clear existing content
-                expensesSidebar.empty();
-                expensesContainer.empty();
+            });
 
 
-                // Iterate through the accounts and append them to the container
-                expenses.forEach(function (expense) {
-                    var expensesSidebarHtml = `
+        </script>
+
+
+        <script>
+            $(document).ready(function () {
+                setInterval(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: "{% url 'getexpenses' %}",
+                        data: {
+                            uid: uid,
+                        },
+                        success: function (response) {
+                            // Call a function to update the HTML with the received accounts
+                            updateExpenseList(response.expenses);
+                        },
+                        error: function (response) {
+                            console.log('error!');
+                        }
+                    });
+                }, 1000); // 1000 milliseconds = 1 second
+
+                // Function to update the HTML with the received accounts
+                function updateExpenseList(expenses) {
+                    var expensesSidebar = $("#expenses_list");
+                    var expensesContainer = $("#expenses_container");
+
+                    // Clear existing content
+                    expensesSidebar.empty();
+                    expensesContainer.empty();
+
+
+                    // Iterate through the accounts and append them to the container
+                    expenses.forEach(function (expense) {
+                        var expensesSidebarHtml = `
                     <div class="sub-item">
                         <span class="name">${expense.name}</span>
                         <span class="material-symbols-outlined">${expense.icon}</span>
                     </div>
                     `;
-                    // Build the HTML for each account
-                    var expensesContainerHtml = `
+                        // Build the HTML for each account
+                        var expensesContainerHtml = `
                     <div class="item" onclick="openPopupTransaction(${expense.id},'${expense.name}','${expense.icon}');">
                         <span class="material-symbols-outlined img">${expense.icon}</span>
                         <div class="name">${expense.name}</div>
                     </div>
             `;
 
-                    // Append the HTML to the container
-                    expensesSidebar.append(expensesSidebarHtml);
-                    expensesContainer.append(expensesContainerHtml);
-                });
-            }
-        });
-    </script>
+                        // Append the HTML to the container
+                        expensesSidebar.append(expensesSidebarHtml);
+                        expensesContainer.append(expensesContainerHtml);
+                    });
+                }
+            });
+        </script>
 
-    <script>
-        $(document).ready(function () {
-            setInterval(function () {
-                $.ajax({
-                    type: 'GET',
-                    url: "{% url 'getincome' %}",
-                    data: {
-                        uid: uid,
-                    },
-                    success: function (response) {
-                        // Call a function to update the HTML with the received accounts
-                        updateIncomeList(response.incomes);
-                    },
-                    error: function (response) {
-                        console.log('error!');
-                    }
-                });
-            }, 1000); // 1000 milliseconds = 1 second
+        <script>
+            $(document).ready(function () {
+                setInterval(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: "{% url 'getincome' %}",
+                        data: {
+                            uid: uid,
+                        },
+                        success: function (response) {
+                            // Call a function to update the HTML with the received accounts
+                            updateIncomeList(response.incomes);
+                        },
+                        error: function (response) {
+                            console.log('error!');
+                        }
+                    });
+                }, 1000); // 1000 milliseconds = 1 second
 
-            // Function to update the HTML with the received accounts
-            function updateIncomeList(incomes) {
-                var incomesSidebar = $("#income_list");
-                var incomesContainer = $("#income_container");
+                // Function to update the HTML with the received accounts
+                function updateIncomeList(incomes) {
+                    var incomesSidebar = $("#income_list");
+                    var incomesContainer = $("#income_container");
 
-                // Clear existing content
-                incomesSidebar.empty();
-                incomesContainer.empty();
+                    // Clear existing content
+                    incomesSidebar.empty();
+                    incomesContainer.empty();
 
 
-                // Iterate through the accounts and append them to the container
-                incomes.forEach(function (income) {
-                    var incomesSidebarHtml = `
+                    // Iterate through the accounts and append them to the container
+                    incomes.forEach(function (income) {
+                        var incomesSidebarHtml = `
                 <div class="sub-item">
                     <span class="name">${income.name}</span>
                     <span class="material-symbols-outlined">${income.icon}</span>
                 </div>
                 `;
-                    // Build the HTML for each account
-                    var incomeContainerHtml = `
+                        // Build the HTML for each account
+                        var incomeContainerHtml = `
                 <div class="item" onclick="openPopupTransaction(${income.id},'${income.name}','${income.icon}');">
                     <span class="material-symbols-outlined img">${income.icon}</span>
                     <div class="name">${income.name}</div>
                 </div>
         `;
 
-                    // Append the HTML to the container
-                    incomesSidebar.append(incomesSidebarHtml);
-                    incomesContainer.append(incomeContainerHtml);
+                        // Append the HTML to the container
+                        incomesSidebar.append(incomesSidebarHtml);
+                        incomesContainer.append(incomeContainerHtml);
+                    });
+                }
+            });
+        </script>
+
+
+
+
+        <script>
+            $(document).on('submit', '#createaccount', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'createaccount' %}",
+                    data: {
+                        uid: uid,
+                        account: $('#account').val(),
+                        initial: $('#initial').val(),
+                        icon: $('input[name="icon"]:checked').val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+
+                    },
+                    success: function (response) {
+                        $('.popups').empty();
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error:', error);
+                        // Log the server's response for more information
+                        console.log(xhr.responseText);
+                    }
                 });
-            }
-        });
-    </script>
 
-
-
-
-    <script>
-        $(document).on('submit', '#createaccount', function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: "{% url 'createaccount' %}",
-                data: {
-                    uid: uid,
-                    account: $('#account').val(),
-                    initial: $('#initial').val(),
-                    icon: $('input[name="icon"]:checked').val(),
-                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-
-                },
-                success: function (response) {
-                    $('.popups').empty();
-                },
-                error: function (xhr, status, error) {
-                    console.log('Error:', error);
-                    // Log the server's response for more information
-                    console.log(xhr.responseText);
-                }
             });
 
-        });
 
+            $(document).on('submit', '#createexpense', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'createexpense' %}",
+                    data: {
+                        uid: uid,
+                        name: $('#expense').val(),
+                        icon: $('input[name="icon"]:checked').val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
 
-        $(document).on('submit', '#createexpense', function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: "{% url 'createexpense' %}",
-                data: {
-                    uid: uid,
-                    name: $('#expense').val(),
-                    icon: $('input[name="icon"]:checked').val(),
-                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    },
+                    success: function (response) {
+                        $('.popups').empty();
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error:', error);
+                        // Log the server's response for more information
+                        console.log(xhr.responseText);
+                    }
+                });
 
-                },
-                success: function (response) {
-                    $('.popups').empty();
-                },
-                error: function (xhr, status, error) {
-                    console.log('Error:', error);
-                    // Log the server's response for more information
-                    console.log(xhr.responseText);
-                }
             });
+        </script>
 
-        });
-    </script>
+        <script>
+            $(document).on('submit', '#createincome', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'createincome' %}",
+                    data: {
+                        uid: uid,
+                        name: $('#income').val(),
+                        icon: $('input[name="icon"]:checked').val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
 
-    <script>
-        $(document).on('submit', '#createincome', function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: "{% url 'createincome' %}",
-                data: {
-                    uid: uid,
-                    name: $('#income').val(),
-                    icon: $('input[name="icon"]:checked').val(),
-                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    },
+                    success: function (response) {
+                        $('.popups').empty();
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error:', error);
+                        // Log the server's response for more information
+                        console.log(xhr.responseText);
+                    }
+                });
 
-                },
-                success: function (response) {
-                    $('.popups').empty();
-                },
-                error: function (xhr, status, error) {
-                    console.log('Error:', error);
-                    // Log the server's response for more information
-                    console.log(xhr.responseText);
-                }
             });
+        </script>
 
-        });
-    </script>
+        <script>
+            $(document).on('submit', '#createtransaction', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'createtransaction' %}",
+                    data: {
+                        uid: uid,
+                        category: $('#category_id').val(),
 
-<script>
-    $(document).on('submit', '#createtransaction', function (e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: "{% url 'createtransaction' %}",
-            data: {
-                uid: uid,
-                category: $('#category_id').val(),
+                        date: $('#date').val(),
+                        account: $('#dropdown').val(),
+                        amount: $('#amount').val(),
+                        description: $('#description').val(),
 
-                date: $('#date').val(),
-                amount: $('#amount').val(),
-                description: $('#description').val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                    },
+                    success: function (response) {
+                        $('.popups').empty();
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error:', error);
+                        // Log the server's response for more information
+                        console.log(xhr.responseText);
+                    }
+                });
 
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-            },
-            success: function (response) {
-                $('.popups').empty();
-            },
-            error: function (xhr, status, error) {
-                console.log('Error:', error);
-                // Log the server's response for more information
-                console.log(xhr.responseText);
-            }
-        });
+            });
+        </script>
 
-    });
-</script>
+        <script>
+            $(document).ready(function () {
+                setInterval(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: "{% url 'getdaybar' %}",
+                        data: {
+                            uid: uid,
+                        },
+                        success: function (response) {
+                            // Call a function to update the HTML with the received accounts
+                            document.getElementById(response.config.selection).checked = true;
+                            document.getElementById('daterange').innerText = response.config.duration;
+                        },
+                        error: function (response) {
+                            console.log('error!');
+                        }
+                    });
+                }, 1000); // 1000 milliseconds = 1 second
+
+
+            });
+        </script>
 
 
 
 
-    <!-- <div class="popup-box" id="popup_categories">
+        <!-- <div class="popup-box" id="popup_categories">
         <button class="close" onclick="removeAllContents('popups');">&times;</button>
 
         <form action="" method="post" id='createaccount'>
@@ -865,6 +895,78 @@
             <button type="submit" class="submit" onclick="console.log('hello');">Add</button>
         </form>
     </div> -->
+
+        <script>
+            function selectAccount(id) {
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'selectaccount' %}",
+                    data: {
+                        id: id,
+                        csrfmiddlewaretoken: csrfToken,
+                    },
+                    success: function (response) {
+                        console.log('select');
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error:', error);
+                        // Log the server's response for more information
+                        console.log(xhr.responseText);
+                    }
+                });
+
+            }
+
+        </script>
+
+        <script>
+            function changeDayBar(a, selection) {
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'changedaybar' %}",
+                    data: {
+                        uid: uid,
+                        selection: selection,
+                        csrfmiddlewaretoken: csrfToken,
+                    },
+                    success: function (response) {
+                        console.log('button clicked');
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error:', error);
+                        // Log the server's response for more information
+                        console.log(xhr.responseText);
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            function navigation(direction) {
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'navigation' %}",
+                    data: {
+                        uid: uid,
+                        direction: direction,
+                        csrfmiddlewaretoken: csrfToken,
+                    },
+                    success: function (response) {
+                        console.log('button clicked');
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('Error:', error);
+                        // Log the server's response for more information
+                        console.log(xhr.responseText);
+                    }
+                });
+            }
+        </script>
 
 </body>
 

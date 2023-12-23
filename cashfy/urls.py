@@ -11,5 +11,8 @@ urlpatterns = [
     path('getincome', views.getincome, name='getincome'),
     path('createincome', views.createincome, name='createincome'),
     path('createtransaction', views.createtransaction, name='createtransaction'),
+    path('selectaccount', views.selectaccount, name='selectaccount'),
+    path('getdaybar', views.getdaybar, name='getdaybar'),
+    path('changedaybar', views.changedaybar, name='changedaybar'),
+    path('navigation', views.navigation, name='navigation'),
 ]
-

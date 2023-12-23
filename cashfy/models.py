@@ -24,7 +24,16 @@ class Transaction(models.Model):
     uid = models.IntegerField()
     timestamp = models.DateTimeField()
     amount = models.IntegerField()
-    account = models.ForeignKey(Account, on_delete=models.CASCADE)
+    account = models.IntegerField()
     detail = models.TextField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.IntegerField()
     expense = models.BooleanField()
+
+class Config(models.Model):
+    uid = models.IntegerField()
+    selection = models.CharField(max_length=255)
+    start = models.DateField()
+    end = models.DateField()
+
+    def __str__(self):
+        return f"Config {self.uid}: {self.start} to {self.end}"

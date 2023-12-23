@@ -1,16 +1,16 @@
 //alert('script.js is connected');
-var htmldata ='';
-var default_selection=false;
-var account_dropdown ='';
+var htmldata = '';
+var default_selection = false;
+var account_dropdown = '';
 
 function focusLogin() {
-    var inputElement = document.getElementById("email");
-    inputElement.focus();
-  }
+  var inputElement = document.getElementById("email");
+  inputElement.focus();
+}
 
-function focusSignUp(){
-    var inputElement = document.getElementById("firstname");
-    inputElement.focus();
+function focusSignUp() {
+  var inputElement = document.getElementById("firstname");
+  inputElement.focus();
 }
 
 
@@ -24,15 +24,15 @@ function removeAllContents(className) {
   }
 }
 
-function hello(){
+function hello() {
   alert("Hello world");
 }
 
 
 
 
-function createicons(){
-  htmldata='';
+function createicons() {
+  htmldata = '';
   for (var icon of iconNames) {
     var query = `
     <input type="radio" name="icon" value="${icon}" id="${icon}" required/>
@@ -49,8 +49,8 @@ function createicons(){
 
 
 
-function addAccount(){
-  htmldata='';
+function addAccount() {
+  htmldata = '';
   createicons();
   const popupsContainer = document.querySelector('.popups');
 
@@ -67,7 +67,7 @@ function addAccount(){
     <div class="content">
       <input type="text" name="account" id="account" placeholder="Account Name" class="name" required>
       <br>
-      <input type="number" name="initial" id="initial" placeholder="Initial balance" class="initial">
+      <input type="number" name="initial" id="initial" placeholder="Initial balance" class="initial" required>
       <br>
       <div class="container-box">
         ${htmldata}
@@ -77,11 +77,19 @@ function addAccount(){
   </form>
   </div>
 `;
-popupsContainer.innerHTML = formHTML;
+  popupsContainer.innerHTML = formHTML;
 }
 
-function addExpense(){
-  htmldata='';
+
+
+
+
+
+
+
+
+function addExpense() {
+  htmldata = '';
   createicons();
   const popupsContainer = document.querySelector('.popups');
 
@@ -106,12 +114,12 @@ function addExpense(){
   </form>
   </div>
 `;
-popupsContainer.innerHTML = formHTML;
+  popupsContainer.innerHTML = formHTML;
 }
 
 
-function addIncome(){
-  htmldata='';
+function addIncome() {
+  htmldata = '';
   createicons();
   const popupsContainer = document.querySelector('.popups');
 
@@ -136,12 +144,12 @@ function addIncome(){
   </form>
   </div>
 `;
-popupsContainer.innerHTML = formHTML;
+  popupsContainer.innerHTML = formHTML;
 }
 
 
 
-function openPopupTransaction(id,name,icon){
+function openPopupTransaction(id, name, icon) {
   const popupsContainer = document.querySelector('.popups');
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
