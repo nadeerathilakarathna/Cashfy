@@ -22,81 +22,108 @@
 
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <script src="{% static 'js/script.js' %}" defer></script>
+
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
     <title>Cashfy</title>
 </head>
 
 <body>
-        <nav>
-            <div class="logo"><img src="{% static 'images/logo.png' %}" alt="Logo"></div>
+    <nav>
+        <div class="logo"><img src="{% static 'images/logo.png' %}" alt="Logo"></div>
 
-            <div class="space">
+        <div class="space">
 
+        </div>
+
+        <div class="items">
+            <div class="home"><a href="#home">Home</a></div>
+            <div class="login"><a href="" onclick="focusLogin(); return false;">Login</a></div>
+            <div class="signup"><a href="#login" onclick="focusSignUp();  return false;">Signup</a></div>
+            <div class="contact"><a href="#contacts">Contact Us</a></div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <img src="{% static 'images/home.png' %}" alt="">
+        <div class="content">
+            <div class="hedding">
+                Welcome to Cashfy!
             </div>
-
-            <div class="items">
-                <div class="home"><a href="#home">Home</a></div>
-                <div class="login"><a href="" onclick="focusLogin(); return false;">Login</a></div>
-                <div class="signup"><a href="#login" onclick="focusSignUp();  return false;">Signup</a></div>
-                <div class="contact">Contact Us</div>
+            <div class="description">
+                <p> Empower your financial journey with our user-friendly platform. Track expenses, set budgets, and
+                    achieve your financial goals effortlessly. Start managing your money wisely today!</p>
             </div>
-        </nav>
+        </div>
 
-        <section id="home">
-            <img src="{% static 'images/home.png' %}" alt="">
-            <div class="content">
-                <div class="hedding">
-                    Welcome to Cashfy!
+    </section>
+
+    <section id="login">
+        <!-- <div class="login-form"> -->
+        <form action="login" method="post">
+            {% csrf_token %}
+            <label class="title" for="login"> Sign In </label>
+            <input type="text" id="email" name="email" placeholder="email" required>
+            <input type="password" id="password" name="password" placeholder="password" required>
+            <button type="submit">Login</button>
+            {% for message in messages %}
+            <label class="message" for="login">{{message}}</label>
+            {% endfor %}
+        </form>
+        <!-- </div> -->
+
+        <!-- <div class="signup-form"> -->
+        <form action="signup" method="post">
+            {% csrf_token %}
+            <label class="title" for="signup">Sign Up</label>
+
+            <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+            <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+
+            <input type="email" id="email" name="email" placeholder="Email" required>
+
+            <input type="password" id="password1" name="password1" placeholder="Password" required>
+            <input type="password" id="password2" name="password2" placeholder="Re-Type Password" required>
+
+            <button type="submit">Sign Up</button>
+
+            {% for message in messages %}
+            <label class="message" for="signup">{{message}}</label>
+            {% endfor %}
+        </form>
+        <!-- </div> -->
+
+    </section>
+
+
+
+    <section id="contacts">
+        <div class="form">
+            <div class="title">
+                Contact us
+            </div>
+            <div class="data">
+                <img src="{% static 'images/developer.png' %}" alt="Developer">
+                <div class="txt">Nadeera Thilakarathna</div>
+            </div>
+            <div class="data">
+                <img src="{% static 'images/email.png' %}" alt="Developer">
+                <div class="txt"><a href="mailto:nadeerathilakarathna4@gmail.com">nadeerathilakarathna4@gmail.com</a>
                 </div>
-                <div class="description">
-                    <p> Empower your financial journey with our user-friendly platform. Track expenses, set budgets, and achieve your financial goals effortlessly. Start managing your money wisely today!</p>
-                   </div>
             </div>
-
-        </section>
-
-        <section id="login">
-            <!-- <div class="login-form"> -->
-                <form action="login" method="post">
-                    {% csrf_token %}
-                    <label class="title" for="login"> Sign In </label>
-                    <input type="text" id="email" name="email" placeholder="email" required>
-                    <input type="password" id="password" name="password" placeholder="password" required>
-                    <button type="submit">Login</button>
-                    {% for message in messages %}
-                            <label class="message" for="login">{{message}}</label>
-                            {% endfor %}
-                </form>
-            <!-- </div> -->
-
-            <!-- <div class="signup-form"> -->
-                <form action="signup" method="post">
-                    {% csrf_token %}
-                    <label class="title" for="signup">Sign Up</label>
-        
-                    <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
-                    <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
-                
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                
-                    <input type="password" id="password1" name="password1" placeholder="Password" required>
-                    <input type="password" id="password2" name="password2" placeholder="Re-Type Password" required>
-
-                    <button type="submit">Sign Up</button>
-
-                    {% for message in messages %}
-                            <label class="message" for="signup">{{message}}</label>
-                            {% endfor %}
-                  </form>
-            <!-- </div> -->
-
-        </section>
+            <div class="data">
+                <img src="{% static 'images/github.png' %}" alt="Developer">
+                <div class="txt"><a href="https://github.com/nadeerathilakarathna">nadeerathilakarathna</a></div>
+            </div>
+            <div class="data">
+                <img src="{% static 'images/linkedin.png' %}" alt="Developer">
+                <div class="txt"><a href="https://www.linkedin.com/in/nadeerathilakarathna">nadeerathilakarathna</a>
+                </div>
+            </div>
+        </div>
 
 
-
-        <section id="contacts">
-            <h2>Section 1</h2>
-            <p>This is the content of Section 1.</p>
-        </section>
+    </section>
 
 </body>
 

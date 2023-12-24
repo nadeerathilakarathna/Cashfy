@@ -3,14 +3,20 @@ var htmldata = '';
 var default_selection = false;
 var account_dropdown = '';
 
+var chart = '';
+
+
+
 function focusLogin() {
   var inputElement = document.getElementById("email");
   inputElement.focus();
+  document.getElementById("login").scrollIntoView({ behavior: 'smooth' });
 }
 
 function focusSignUp() {
   var inputElement = document.getElementById("firstname");
   inputElement.focus();
+  document.getElementById("login").scrollIntoView({ behavior: 'smooth' });
 }
 
 

@@ -6,14 +6,13 @@ from django.http import HttpResponse
 # Create your views here.
 def home(request):
     referring_url = request.META.get('HTTP_REFERER', None)
+    if request.user.is_authenticated:
+        uid = request.user.id
+        return render(request, 'dashboard.html')
+
     if request.method == 'POST':
-    # post_data = request.POST
-    # for key, value in post_data.items():
-    #     print(f"{key}, {value}")
         if referring_url:
-                print(referring_url)
                 if referring_url.split('/')[-1] == 'login':
-                    print("LOGIN")
                     email = request.POST['email']
                     password = request.POST['password']
                     user = auth.authenticate( email=email, password=password)
@@ -25,10 +24,6 @@ def home(request):
                         return redirect('login')
                 elif referring_url.split('/')[-1] == 'signup':
                     post_data = request.POST
-                    for key, value in post_data.items():
-                        print(f"{key}, {value}")
-
-
                 return render(request, 'index.html')
     else:
         return render(request,'index.html')
@@ -36,7 +31,6 @@ def home(request):
 def login(request):
     referring_url = request.META.get('HTTP_REFERER', None)
     if request.method == 'POST':
-        print("LOGIN")
         email = request.POST['email']
         password = request.POST['password']
         user = auth.authenticate( username=email, password=password)

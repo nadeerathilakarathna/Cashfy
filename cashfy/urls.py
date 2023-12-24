@@ -15,4 +15,5 @@ urlpatterns = [
     path('getdaybar', views.getdaybar, name='getdaybar'),
     path('changedaybar', views.changedaybar, name='changedaybar'),
     path('navigation', views.navigation, name='navigation'),
+    path('updatedata', views.updatedata, name='updatedata'),
 ]

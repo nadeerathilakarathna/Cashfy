@@ -198,11 +198,31 @@
 
     }
 
+    select{
+        font-size: 1.2em;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%,0);
+        width: 300px;
+        padding: 10px;
+        border: none;
+        border-bottom: 1px solid black;
+        margin: 5px;
+    }
+
+    select:hover{
+        border: 1px solid #999;
+    }
+
 
 }
 
 #popup_categories{
     width: 30vw;
     min-width: 400px;
-    height: 450px;
+    height: 470px;
 }
+
+
+
+
