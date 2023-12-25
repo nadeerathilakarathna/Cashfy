@@ -53,6 +53,11 @@ body {
         width: 100%;
         display: flex;
         flex-direction: column;
+
+        .profile .name{
+            width: 210px;
+            min-width: 210px;
+        }
         
 
         .item {
