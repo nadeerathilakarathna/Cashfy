@@ -2,7 +2,7 @@
 
 ## Personal Finance Management Web Solution using Django
 
-![](screenshots/add_account.jpg)
+![Home](screenshots/add_account.jpg)
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -22,7 +22,7 @@
 
 Cashfy is a web application developed for personal finance management. It empowers users to track their day-to-day incomes and expenses, providing instant visualizations based on customizable date, weeks, months, years, or all, and choosing their accounts.
 
-![dashboard](screenshots/dashboard1.JPG)
+![dashboard](screenshots/dashboard1.jpg)
 ## Technologies Used
 
 - Python
@@ -38,13 +38,13 @@ Cashfy is a web application developed for personal finance management. It empowe
 
 Users can create an account by providing their first name, last name, email, and password. Afterward, users can log in using their email and password.
 
-![Login](screenshots/login.JPG)
+![Login](screenshots/login.jpg)
 
 ### 2. Add Account
 
 Users can add their accounts by entering the account name, initial balance, and choosing an icon. You can add your wallet, bank accounts, cards etc.
 
-![Add account](screenshots/add_account.JPG)
+![Add account](screenshots/add_account.jpg)
 
 ### 3. Categories
 
@@ -52,30 +52,30 @@ Users can add their accounts by entering the account name, initial balance, and 
 
 Users can add expense sources by entering the name and choosing an icon.
 
-![Add expense](screenshots/add_expense.JPG)
+![Add expense](screenshots/add_expense.jpg)
 
 #### 3.2 Income
 
 Users can add income sources by entering the name and choosing an icon.
 
-![Add income](screenshots/add_income.JPG)
+![Add income](screenshots/add_income.jpg)
 
 ### 4. Add Expense
 Users can add day-to-day expenses by clicking on the expense category item, entering the date, choosing an account, entering the amount, and providing a description.
 
-![Expense](screenshots/expense.JPG)
+![Expense](screenshots/expense.jpg)
 
 ### 5. Add Income
 Users can add day-to-day incomes by clicking on the income category item, entering the date, choosing an account, entering the amount, and providing a description.
 
-![Income](screenshots/income.JPG)
+![Income](screenshots/income.jpg)
 
 ### 6. Data Visualization
 Users can view reports using a donut chart. Data visualization is customizable, allowing users to view data by date, week, year, month, or all, and selecting the account in the sidebar.
 
-![dashboard](screenshots/dashboard1.JPG)
-![dashboard](screenshots/dashboard2.JPG)
-![dashboard](screenshots/dashboard3.JPG)
+![dashboard](screenshots/dashboard1.jpg)
+![dashboard](screenshots/dashboard2.jpg)
+![dashboard](screenshots/dashboard3.jpg)
 
 ## License
 This project distributed under the GPL V2 license. When you make changes the source code, you must give the permission for owner and give the credits to the authorized owner.
