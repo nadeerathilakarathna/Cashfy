@@ -2,7 +2,7 @@
 
 ## Personal Finance Management Web Solution using Django
 
-![Home](screenshots/home.JPG)
+![](screenshots/home.JPG)
 
 ## Table of Contents
 - [Introduction](#introduction)
