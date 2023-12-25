@@ -62,6 +62,7 @@ function addAccount() {
 
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
   var formHTML = `
+  <div class="full-screen">
   <div class="popup-box">
     <button class="close" onclick="removeAllContents('popups');">&times;</button>
 
@@ -82,6 +83,7 @@ function addAccount() {
     <button type="submit" class="submit" onclick="console.log('hello');">Add</button>
   </form>
   </div>
+  </div>
 `;
   popupsContainer.innerHTML = formHTML;
 }
@@ -101,6 +103,7 @@ function addExpense() {
 
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
   var formHTML = `
+  <div class="full-screen">
   <div class="popup-box">
     <button class="close" onclick="removeAllContents('popups');">&times;</button>
 
@@ -119,6 +122,7 @@ function addExpense() {
     <button type="submit" class="submit">Add</button>
   </form>
   </div>
+  </div>
 `;
   popupsContainer.innerHTML = formHTML;
 }
@@ -131,6 +135,7 @@ function addIncome() {
 
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
   var formHTML = `
+  <div class="full-screen">
   <div class="popup-box">
     <button class="close" onclick="removeAllContents('popups');">&times;</button>
 
@@ -149,6 +154,7 @@ function addIncome() {
     <button type="submit" class="submit">Add</button>
   </form>
   </div>
+  </div>
 `;
   popupsContainer.innerHTML = formHTML;
 }
@@ -163,6 +169,7 @@ function openPopupTransaction(id, name, icon) {
   const formattedDate = currentDate.toISOString().split('T')[0];
 
   var formHTML = `
+  <div class="full-screen">
     <div class="popup-box" id="popup_categories">
         <button class="close" onclick="removeAllContents('popups');">&times;</button>
 
@@ -197,6 +204,7 @@ function openPopupTransaction(id, name, icon) {
             </div>
             <button type="submit" class="submit" onclick="console.log('hello');">Add</button>
         </form>
+    </div>
     </div>
   `;
 
